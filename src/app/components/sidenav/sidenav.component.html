@@ -1,0 +1,17 @@
+<mat-nav-list role="navigation" class="p-3">
+  <a
+    mat-list-item
+    routerLink="/"
+    routerLinkActive="active-list-item"
+    [routerLinkActiveOptions]="{ exact: true }"
+    (click)="onClickLink()"
+    >Home</a
+  >
+  <a
+    mat-list-item
+    routerLink="/catFacts"
+    routerLinkActive="active-list-item"
+    (click)="onClickLink()"
+    >Cat Facts</a
+  >
+</mat-nav-list>

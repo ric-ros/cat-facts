@@ -1,0 +1,26 @@
+<mat-toolbar
+  color="primary"
+  class="d-flex justify-content-center align-items-center"
+>
+  <div class="me-auto">
+    <button
+      (click)="onClickMenu()"
+      mat-icon-button
+      class="example-icon"
+      aria-label="Example icon-button with menu icon"
+    >
+      <mat-icon>menu</mat-icon>
+    </button>
+  </div>
+  <span routerLink="/" class="pointer d-flex align-items-center"
+    >Cat Facts<mat-icon class="mx-2">fact_check</mat-icon></span
+  >
+  <span class="ms-auto"></span>
+  <button
+    mat-icon-button
+    class="example-icon"
+    aria-label="Example icon-button with share icon"
+  >
+    <mat-icon matTooltip="Go to GitHub page">person</mat-icon>
+  </button>
+</mat-toolbar>

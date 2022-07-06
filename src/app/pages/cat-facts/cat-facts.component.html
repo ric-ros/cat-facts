@@ -1,0 +1,38 @@
+<div class="container p-3">
+  <div class="row align-items-center justify-content-center">
+    <button
+      class="col-12 col-md-6"
+      mat-raised-button
+      color="primary"
+      (click)="getRandomFact()"
+    >
+      {{ facts.length ? "Get Another Random Fact" : "Get Random Fact" }}
+    </button>
+  </div>
+</div>
+<hr />
+<ngx-masonry>
+  <div
+    class="col-12 col-sm-6 col-md-4 col-lg-3"
+    ngxMasonryItem
+    *ngFor="let fact of facts"
+  >
+    <div class="card">
+      <img class="card-img-top" alt="{{ fact.user }}" [src]="fact.img" />
+      <div class="card-body">
+        <h5 class="card-title">Created: {{ fact.createdAt | date }}</h5>
+        <p class="card-text">{{ fact.text }}</p>
+      </div>
+      <div class="btn-overlayed">
+        <button
+          mat-fab
+          color="warn"
+          matTooltip="Delete this fact!"
+          (click)="deleteFact(fact._id)"
+        >
+          <mat-icon>delete</mat-icon>
+        </button>
+      </div>
+    </div>
+  </div>
+</ngx-masonry>
