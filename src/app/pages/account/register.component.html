@@ -102,7 +102,33 @@
             (form.get('password')?.errors)!['required']
           "
         >
-          🛑 The last name is required
+          🛑 The password is required
+        </div>
+        <div
+          class="invalid-feedback"
+          *ngIf="
+            submitted &&
+            form.get('password')?.errors &&
+            (this.form.get('password')?.errors)!['minlength']
+          "
+        >
+          🛑
+          {{
+            (this.form.get("password")?.errors)!["minlength"]["actualLength"]
+          }}
+          character{{
+            (this.form.get("password")?.errors)!["minlength"][
+              "actualLength"
+            ] === 1
+              ? " is"
+              : "s are"
+          }}
+          not enough! <br />
+          The password should be
+          {{
+            (this.form.get("password")?.errors)!["minlength"]["requiredLength"]
+          }}
+          characters long!
         </div>
       </div>
       <div class="form-floating">
