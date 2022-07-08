@@ -4,6 +4,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { NgxMasonryComponent, NgxMasonryOptions } from 'ngx-masonry';
 import { firstValueFrom, map, zip } from 'rxjs';
 import { CatRes, FactRes, FactsRes } from 'src/app/models/factRes.model';
+import { FactService } from 'src/app/services/fact.service';
 
 @Component({
   selector: 'app-cat-facts',
@@ -30,40 +31,18 @@ export class CatFactsComponent implements OnInit {
     },
   };
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private factService: FactService) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.fact = this.factService.fact;
+  }
 
-  getRandomFact() {
-    const factSub = this.http.get<FactRes>('https://catfact.ninja/fact');
-
-    const catSub = this.http.get<CatRes[]>(
-      'https://api.thecatapi.com/v1/images/search'
-    );
-
-    zip(factSub, catSub)
-      .pipe(
-        map((x) => {
-          x[0].id = this.idCounter++;
-          x[0].img = x[1][0].url;
-          return x[0];
-        })
-      )
-      .subscribe(async (res) => {
-        if (this.fact == undefined) {
-          this.fact = await firstValueFrom(
-            this.http.get<FactsRes>('https://catfact.ninja/facts')
-          );
-
-          this.fact.data = [];
-        }
-        this.fact.data.push(res);
-      });
+  async getRandomFact() {
+    this.fact = await this.factService.getFacts();
   }
 
   deleteFact(el: HTMLElement, id?: number) {
     this.mansory.remove(el);
-    if (this.fact !== undefined)
-      this.fact.data = this.fact.data.filter((x) => x.id !== id);
+    this.fact = this.factService.deleteFacts(id);
   }
 }
