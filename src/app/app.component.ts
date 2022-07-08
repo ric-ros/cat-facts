@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { User } from './models/factRes.model';
 import { AccountService } from './services/account.service';
 
@@ -7,7 +7,7 @@ import { AccountService } from './services/account.service';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   events: string[] = [];
   opened: boolean = false;
 
@@ -15,6 +15,10 @@ export class AppComponent {
 
   constructor(private accountService: AccountService) {
     this.accountService.user.subscribe((x) => (this.user = x));
+  }
+
+  ngOnInit(): void {
+    this.user = this.accountService.userValue;
   }
 
   logout() {

@@ -11,6 +11,7 @@
 
   <mat-sidenav-content>
     <app-toolbar
+      [isLogged]="!!user"
       (menuClicked)="sidenav.toggle()"
       (logoutClicked)="logout()"
     ></app-toolbar>

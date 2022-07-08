@@ -6,17 +6,15 @@ import { AccountRoutingModule } from './account-routing.module';
 import { LayoutComponent } from './layout.component';
 import { LoginComponent } from './login.component';
 import { RegisterComponent } from './register.component';
+import { MaterialModule } from 'src/app/material/material.module';
 
 @NgModule({
-    imports: [
-        CommonModule,
-        ReactiveFormsModule,
-        AccountRoutingModule
-    ],
-    declarations: [
-        LayoutComponent,
-        LoginComponent,
-        RegisterComponent
-    ]
+  imports: [
+    CommonModule,
+    ReactiveFormsModule,
+    AccountRoutingModule,
+    MaterialModule,
+  ],
+  declarations: [LayoutComponent, LoginComponent, RegisterComponent],
 })
-export class AccountModule { }
+export class AccountModule {}

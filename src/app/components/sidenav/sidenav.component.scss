@@ -2,3 +2,10 @@
   background-color: #3f51b5 !important;
   color: #ffffff !important;
 }
+
+.error-login {
+  cursor: default;
+  pointer-events: none;
+  text-decoration: none;
+  color: grey;
+}
