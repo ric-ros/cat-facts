@@ -7,6 +7,7 @@ import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 })
 export class ToolbarComponent implements OnInit {
   @Output() menuClicked = new EventEmitter();
+  @Output() logoutClicked = new EventEmitter();
 
   constructor() {}
 
@@ -14,5 +15,9 @@ export class ToolbarComponent implements OnInit {
 
   onClickMenu() {
     this.menuClicked.emit();
+  }
+
+  onClickLogout() {
+    this.logoutClicked.emit();
   }
 }

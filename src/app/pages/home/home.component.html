@@ -1,1 +1,15 @@
-<p>home works!</p>
+<div class="p-4">
+  <div class="container">
+    <div class="row">
+      <div
+        class="col-12 d-flex flex-column align-items-center justify-content-center"
+      >
+        <h1>Hi {{ user?.firstName }}!</h1>
+        <p>You're logged in with a completely fake authentication 🐱‍🏍</p>
+        <button mat-raised-button routerLink="/users">
+          Let's go to the user's console
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

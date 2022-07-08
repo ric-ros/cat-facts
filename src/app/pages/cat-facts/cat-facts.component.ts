@@ -59,8 +59,6 @@ export class CatFactsComponent implements OnInit {
         }
         this.fact.data.push(res);
       });
-
-    console.log(this.fact?.data.length);
   }
 
   deleteFact(el: HTMLElement, id?: number) {

@@ -1,0 +1,120 @@
+﻿<div class="card">
+  <h4 class="card-header mb-0">Register</h4>
+  <div class="card-body">
+    <h4 class="text-muted text-center">All fields are required *</h4>
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+      <div class="form-floating mb-3">
+        <input
+          placeholder="name"
+          id="firstName"
+          type="text"
+          formControlName="firstName"
+          class="form-control"
+          [ngClass]="{
+            'is-invalid': submitted && form.get('firstName')?.errors
+          }"
+        />
+        <label for="firstName">First Name</label>
+        <div
+          class="invalid-feedback"
+          *ngIf="
+            submitted &&
+            form.get('firstName')?.errors &&
+            (form.get('firstName')?.errors)!['required']
+          "
+        >
+          🛑 The first name is required
+        </div>
+      </div>
+      <div class="form-floating mb-3">
+        <input
+          placeholder="name"
+          id="lastName"
+          type="text"
+          formControlName="lastName"
+          class="form-control"
+          [ngClass]="{
+            'is-invalid': submitted && form.get('lastName')?.errors
+          }"
+        />
+        <label for="lastName">Last Name</label>
+        <div
+          class="invalid-feedback"
+          *ngIf="
+            submitted &&
+            form.get('lastName')?.errors &&
+            (form.get('lastName')?.errors)!['required']
+          "
+        >
+          🛑 The last name is required
+        </div>
+      </div>
+      <div class="form-floating mb-3">
+        <input
+          placeholder="name"
+          id="username"
+          type="email"
+          formControlName="username"
+          class="form-control"
+          [ngClass]="{
+            'is-invalid': submitted && form.get('username')?.errors
+          }"
+        />
+        <label for="username">Email</label>
+        <div
+          class="invalid-feedback"
+          *ngIf="
+            submitted &&
+            form.get('username')?.errors &&
+            (form.get('username')?.errors)!['required']
+          "
+        >
+          🛑 The email is required
+        </div>
+        <div
+          class="invalid-feedback"
+          *ngIf="
+            submitted &&
+            form.get('username')?.errors &&
+            (form.get('username')?.errors)!['email']
+          "
+        >
+          🛑 The email is invalid
+        </div>
+      </div>
+      <div class="form-floating mb-3">
+        <input
+          placeholder="name"
+          id="password"
+          type="password"
+          formControlName="password"
+          class="form-control"
+          [ngClass]="{
+            'is-invalid': submitted && form.get('password')?.errors
+          }"
+        />
+        <label for="password">Password</label>
+        <div
+          class="invalid-feedback"
+          *ngIf="
+            submitted &&
+            form.get('password')?.errors &&
+            (form.get('password')?.errors)!['required']
+          "
+        >
+          🛑 The last name is required
+        </div>
+      </div>
+      <div class="form-floating">
+        <button [disabled]="loading" type="submit" class="btn btn-primary">
+          <span
+            *ngIf="loading"
+            class="spinner-border spinner-border-sm mr-1"
+          ></span>
+          Register
+        </button>
+        <a routerLink="../login" class="btn btn-link">Login</a>
+      </div>
+    </form>
+  </div>
+</div>

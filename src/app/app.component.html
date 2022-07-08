@@ -10,9 +10,14 @@
   </mat-sidenav>
 
   <mat-sidenav-content>
-    <app-toolbar (menuClicked)="sidenav.toggle()"></app-toolbar>
-    <div class="container mt-2">
+    <app-toolbar
+      (menuClicked)="sidenav.toggle()"
+      (logoutClicked)="logout()"
+    ></app-toolbar>
+    <div class="container mt-2 with-footer">
+      <alert></alert>
       <router-outlet></router-outlet>
     </div>
+    <app-footer></app-footer>
   </mat-sidenav-content>
 </mat-sidenav-container>
