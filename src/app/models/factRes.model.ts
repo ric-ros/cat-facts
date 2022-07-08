@@ -1,19 +1,29 @@
 export interface FactRes {
-  status: {
-    verified: boolean;
-    sentCount: number;
-  };
-  _id: string;
-  user: string;
-  text: string;
-  __v: number;
-  source: string;
-  updatedAt: Date;
-  type: string;
-  createdAt: Date;
-  deleted: boolean;
-  used: boolean;
+  id?: number;
+  fact: string;
+  length: number;
   img?: string;
+}
+export interface FactsRes {
+  current_page: number;
+  data: FactRes[];
+  first_page_url: string;
+  from: number;
+  last_page: string;
+  last_page_url: string;
+  links: [
+    {
+      url?: string;
+      label: string;
+      active: boolean;
+    }
+  ];
+  next_page_url: string;
+  path: string;
+  per_page: number;
+  prev_page_url?: string;
+  to: number;
+  total: number;
 }
 
 export interface CatRes {
